@@ -8,10 +8,15 @@ import OurProducts from "../../components/OurProducts";
 import Focus from "../../components/FocusingInfo";
 import Specials from "../../components/Specials";
 import Info from "../../components/BottomsAbouts";
+import { useSelector } from "react-redux";
+import ServerDown from "../../components/Server-down";
 
 const Layout = () => {
+  const { products } = useSelector((state) => state.products);
   return (
     <>
+      {/* if server off then call the ServerDown component  */}
+      if(products.length === 0){<ServerDown />}
       <Home />
       <Focus />
       <Features />

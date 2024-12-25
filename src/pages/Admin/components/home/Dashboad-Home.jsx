@@ -55,7 +55,20 @@ const DashboardHome = () => {
     dispatch(getOrders()).then(() => {
       setTotalOrders(orders?.length);
     });
-  }, [dispatch, navigate, location]);
+    setTotalUsers(users?.length);
+    setTotalOrders(orders?.length);
+  }, []);
+
+  function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+  }
 
   return (
     <div className=" md:px-2 py-2 h-fit flex flex-col gap-8 w-full">
@@ -77,12 +90,13 @@ const DashboardHome = () => {
               ? "text-lightGray text-sm font-medium myBorder rounded-md flexCenter gap-2 cursor-pointer"
               : "text-blackBG text-sm font-medium myBorder rounded-md flexCenter gap-2 cursor-pointer"
           }
+          onClick={() => printDiv("printableArea")}
         >
           <FaDownload /> Export
         </div>
       </div>
       {/* Stats Boxes */}
-      <div className="flex items-center gap-6 flex-wrap">
+      <div id="printableArea" className="flex items-center gap-6 flex-wrap">
         {/* Total Renvue */}
         <div
           className={

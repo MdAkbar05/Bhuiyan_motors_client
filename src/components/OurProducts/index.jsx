@@ -52,6 +52,13 @@ const OurProducts = () => {
           </button>
         ))}
       </div>
+      {/* if products length 0 then show a warning message */}
+      {products?.length === 0 && (
+        <p className="text-center text-red-400 text-lg">
+          No products found. Please try again later.
+        </p>
+      )}
+
       {/* Product List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {groupedProducts[activeTab]?.map((product) => (

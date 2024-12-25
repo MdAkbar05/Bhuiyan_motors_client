@@ -104,13 +104,7 @@ const orderSlice = createSlice({
       })
       // update order status
       .addCase(updateOrderStatus.fulfilled, (state, action) => {
-        const updatedOrder = action.payload;
-        const index = state.orders.findIndex(
-          (order) => order._id === updatedOrder._id
-        );
-        if (index !== -1) {
-          state.orders[index] = updatedOrder;
-        }
+        state.status = "fulfilled";
       });
   },
 });

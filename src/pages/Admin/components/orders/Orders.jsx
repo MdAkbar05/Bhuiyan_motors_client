@@ -61,6 +61,7 @@ const Orders = () => {
 
   const handleStatusChange = (orderId, newStatus) => {
     dispatch(updateOrderStatus({ orderId, status: newStatus }));
+    dispatch(getOrders());
     setStatusDropdown({}); // Close the dropdown after status update
   };
 
@@ -143,7 +144,7 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredOrders.length > 0 ? (
+            {filteredOrders?.length > 0 ? (
               filteredOrders?.map((order) => (
                 <tr
                   key={order._id}
@@ -154,14 +155,14 @@ const Orders = () => {
                   }
                 >
                   <td className="py-2 px-4 text-sm ">
-                    {order.shippingDetails.location}
+                    {order?.shippingDetails.location}
                   </td>
                   <td className="py-2 px-4 text-sm ">
-                    {order.shippingDetails.payment}
+                    {order?.shippingDetails.payment}
                   </td>
-                  <td className="py-2 px-4 text-sm ">{order.user.name}</td>
+                  <td className="py-2 px-4 text-sm ">{order?.user?.name}</td>
                   <td className="py-2 px-4 text-sm ">
-                    {order.totalPrice.toFixed(2)}TK
+                    {order?.totalPrice.toFixed(2)}TK
                   </td>
                   <td className="py-2 px-4 text-sm">
                     <span
@@ -175,7 +176,7 @@ const Orders = () => {
                           : "bg-red-100 text-red-700"
                       }`}
                     >
-                      {order.status}
+                      {order?.status}
                     </span>
                   </td>
                   <td className="py-2 px-4 text-sm ">
@@ -196,27 +197,24 @@ const Orders = () => {
                         Update Status
                       </button>
                       {statusDropdown[order._id] && (
-                        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                          <div className="py-1">
-                            {[
-                              "Pending",
-                              "Processing",
-                              "Delivered",
-                              "Cancelled",
-                            ].map((statusOption) => (
-                              <button
-                                key={statusOption}
-                                onClick={() =>
-                                  handleStatusChange(order._id, statusOption)
-                                }
-                                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                              >
-                                {statusOption}
-                              </button>
-                            ))}
+                        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 ">
+                          <div className="py-1 ">
+                            {["Pending", "Delivered", "Cancelled"].map(
+                              (statusOption) => (
+                                <button
+                                  key={statusOption}
+                                  onClick={() =>
+                                    handleStatusChange(order._id, statusOption)
+                                  }
+                                  className=" w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                >
+                                  {statusOption}
+                                </button>
+                              )
+                            )}
                             <button
                               onClick={handleCloseDropdown}
-                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              className="w-full text-left px-4 py-2 text-sm text-red-700 bg-slate-200 hover:bg-gray-100"
                             >
                               Cancel
                             </button>

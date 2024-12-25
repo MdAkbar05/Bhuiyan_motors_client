@@ -100,7 +100,7 @@ const Products = () => {
               </tr>
             </thead>
             <tbody className="text-black">
-              {filteredProducts.map((product) => (
+              {filteredProducts?.map((product) => (
                 <tr
                   key={product._id}
                   className="border-b bg-white hover:bg-gray-50"
