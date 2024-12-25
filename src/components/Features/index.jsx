@@ -40,13 +40,15 @@ const Features = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className=" p-8 rounded-md drop-shadow-lg bg-extra space-y-2"
+            className=" p-8 rounded-md drop-shadow-lg bg-extra space-y-2 hover:scale-105 transition-all cursor-pointer hover:shadow-lg "
           >
             <div className="flexCenter gap-2">
               <div className="flex items-center">{feature.icon}</div>
-              <div className="text-xl uppercase">{feature.title}</div>
+              <div className="text-xl uppercase font-medium">
+                {feature.title}
+              </div>
             </div>
-            <div className="text-green-500">{feature.desc}</div>
+            <div className="text-lightGray">{feature.desc}</div>
           </div>
         ))}
       </div>

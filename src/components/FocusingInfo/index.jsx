@@ -35,16 +35,16 @@ const Focus = () => {
       {features.map((feature, index) => (
         <div
           key={index}
-          className=" md:p-8 sm:p-2 md:py-12 sm:py-4 rounded-lg drop-shadow-xl backdrop-blur-lg bg-extra space-y-2"
+          className=" md:p-8 sm:p-2 md:py-12 sm:py-4 rounded-lg drop-shadow-xl backdrop-blur-lg bg-extra space-y-2 hover:scale-105 transition-all cursor-pointer hover:shadow-lg "
         >
           <div className="text-white text-center md:text-3xl sm:text-lg font-semibold">
             {feature.desc}
           </div>
           <div className="flexCenter gap-2">
-            <div className="sm:text-sm md:text-lg uppercase text-green-400 font-semibold">
+            <div className="sm:text-sm md:text-lg uppercase text-textColor font-semibold">
               {feature.title}
             </div>
-            <div className="flex items-center text-green-400">
+            <div className="flex items-center text-textColor">
               {feature.icon}
             </div>
           </div>

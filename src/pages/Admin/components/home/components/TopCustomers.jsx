@@ -1,46 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
-
-const customers = [
-  {
-    id: 1,
-    name: "John Doe",
-    purchases: 15,
-    image: "https://via.placeholder.com/50",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    purchases: 12,
-    image: "https://via.placeholder.com/50",
-  },
-  {
-    id: 3,
-    name: "Sam Wilson",
-    purchases: 10,
-    image: "https://via.placeholder.com/50",
-  },
-  {
-    id: 4,
-    name: "Lisa Brown",
-    purchases: 8,
-    image: "https://via.placeholder.com/50",
-  },
-  {
-    id: 5,
-    name: "Mark Johnson",
-    purchases: 7,
-    image: "https://via.placeholder.com/50",
-  },
-];
+import { useDispatch } from "react-redux";
+import { getUsers } from "../../../../../features/userSlice";
+import { getOrders } from "../../../../../Features/orderSlice";
 
 const TopCustomers = () => {
   const [search, setSearch] = useState("");
   const [isNightMode] = useOutletContext();
+  const dispatch = useDispatch();
+  const { orders, status } = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    dispatch(getOrders());
+  }, []);
+
+  const customers = {};
+
+  for (let i = 0; i < orders.length; i++) {
+    customers[i] = orders[i]; // Assign index as the key and element as the value
+  }
+
+  const userOrderCount = {};
+
+  orders.forEach((order) => {
+    const userId = order.user._id;
+    if (!userOrderCount[userId]) {
+      userOrderCount[userId] = { name: order.user.name, totalOrders: 0 };
+    }
+    userOrderCount[userId].totalOrders += 1;
+  });
+
+  // Convert userOrderCount object to a separate array of objects
+  let userOrderCountArray = Object.values(userOrderCount);
 
   // Filter customers based on search input
-  const filteredCustomers = customers.filter((customer) =>
-    customer.name.toLowerCase().includes(search.toLowerCase())
+  userOrderCountArray = userOrderCountArray.filter((customer) =>
+    customer?.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -77,17 +73,15 @@ const TopCustomers = () => {
 
       {/* Customer List */}
       <div className="flex gap-2 flex-wrap">
-        {filteredCustomers.map((customer) => (
+        {userOrderCountArray.map((customer) => (
           <div
-            key={customer.id}
+            key={customer?.name}
             className="flex items-center p-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             {/* Customer Image */}
-            <img
-              src={customer.image}
-              alt={`${customer.name}'s profile`}
-              className="w-12 h-12 rounded-full"
-            />
+            <div className="size-8 rounded-full bg-slate-400 flexCenter">
+              {(customer?.name).slice(0, 1)}
+            </div>
             {/* Customer Details */}
             <div className="ml-4">
               <p
@@ -97,7 +91,7 @@ const TopCustomers = () => {
                     : "text-black font-medium"
                 }
               >
-                {customer.name}
+                {customer?.name}
               </p>
               <p
                 className={
@@ -106,12 +100,12 @@ const TopCustomers = () => {
                     : "text-gray-600 text-sm"
                 }
               >
-                Purchases: {customer.purchases}
+                Purchases: {customer.totalOrders}
               </p>
             </div>
           </div>
         ))}
-        {filteredCustomers.length === 0 && (
+        {userOrderCountArray.length === 0 && (
           <p
             className={
               isNightMode

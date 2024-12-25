@@ -29,7 +29,7 @@ const DashboardRouter = () => {
 
   const menu = [
     { label: "Overview", path: "/dashboard/dash", icon: <MdDashboard /> },
-    { label: "Analytics", path: "/dashboard/analytics", icon: <MdAnalytics /> },
+    // { label: "Analytics", path: "/dashboard/analytics", icon: <MdAnalytics /> },
   ];
 
   const management = [

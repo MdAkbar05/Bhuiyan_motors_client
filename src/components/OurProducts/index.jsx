@@ -83,10 +83,10 @@ const OurProducts = () => {
         ))}
       </div>
       {/* Show more button  */}
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-4">
         <Link
           to="/product"
-          className="px-4 py-2 text-white border-b-[.5px] hover:bg-primary-dark"
+          className="px-4 py-2 text-lightGray border-b-[.5px] hover:bg-primary-dark"
         >
           Explore all
         </Link>

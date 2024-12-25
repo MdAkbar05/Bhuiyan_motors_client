@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HelmetPage from "../../components/Helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById, getProducts } from "../../Features/productSlice";
 import ProductsLoading from "../../components/Skeleton/ProductsLoading";
 import { addToCart } from "../../Features/cartSlice";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 
 const Products = () => {
@@ -15,9 +15,13 @@ const Products = () => {
 
   const [sortOrder, setSortOrder] = useState("asc");
   const [priceRange, setPriceRange] = useState([0, 1000]);
-  const [selectedCategory, setSelectedCategory] = useState("");
   let categories = [...new Set(products.map((product) => product.category))];
   categories = categories.concat("All");
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  const location = useLocation(); // Hook to access location
+  const params = new URLSearchParams(location.search);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   React.useEffect(() => {
     dispatch(getProducts());
@@ -26,17 +30,28 @@ const Products = () => {
   const handleSortChange = (e) => setSortOrder(e.target.value);
   const handlePriceChange = (e) => setPriceRange([0, e.target.value]);
 
-  const filteredProducts = products
-    ?.filter(
-      (product) => !selectedCategory || product.category === selectedCategory
-    )
-    .filter(
-      (product) =>
-        product.price >= priceRange[0] && product.price <= priceRange[1]
-    )
-    .sort((a, b) =>
-      sortOrder === "asc" ? a.price - b.price : b.price - a.price
+  useEffect(() => {
+    setSelectedCategory(params.get("category"));
+    setFilteredProducts(
+      products
+        ?.filter(
+          (product) =>
+            !selectedCategory || product.category === selectedCategory
+        )
+        .filter(
+          (product) =>
+            product.price >= priceRange[0] && product.price <= priceRange[1]
+        )
+        .sort((a, b) =>
+          sortOrder === "asc" ? a.price - b.price : b.price - a.price
+        )
     );
+  }, [navigate, location, handleSortChange, handlePriceChange, params]);
+
+  const handleCurrentProductCategory = (category) => {
+    setSelectedCategory(category == "All" ? "" : category);
+    navigate(`/product?category=${category}`);
+  };
 
   const handleCurrentProduct = (id) => {
     dispatch(getProductById(id));
@@ -51,20 +66,22 @@ const Products = () => {
       />
       <div className="container mx-auto p-4 flex  ">
         {/* Sidebar */}
-        <aside className="w-32 pt-4 border-r border-secondary">
-          <h2 className="font-semibold text-white mb-3">Categories</h2>
+        <aside className="w-40 pt-4 border-r border-secondary">
+          <h2 className="font-semibold text-white mb-3 uppercase">
+            Categories
+          </h2>
           <ul className="space-y-2">
             {categories?.map((category) => (
               <li
                 key={category}
-                className={`cursor-pointer ${
+                className={`cursor-pointer bg-extra p-1 rounded-lg ${
                   selectedCategory === category
                     ? "font-semibold  text-primary "
                     : "text-gray-50 "
                 }`}
-                onClick={() =>
-                  setSelectedCategory(category === "All" ? "" : category)
-                }
+                onClick={() => {
+                  handleCurrentProductCategory(category);
+                }}
               >
                 {category}
               </li>
@@ -95,7 +112,7 @@ const Products = () => {
               <input
                 type="range"
                 min="0"
-                max="500"
+                max="1000"
                 value={priceRange[1]}
                 onChange={handlePriceChange}
                 className="w-32"

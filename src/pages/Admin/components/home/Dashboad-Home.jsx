@@ -30,7 +30,6 @@ const DashboardHome = () => {
   const [totalOrders, setTotalOrders] = useState(0);
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [isNightMode] = useOutletContext();
-  console.log(isNightMode);
 
   const { users } = useSelector((state) => state.users);
   const { products } = useSelector((state) => state.products);

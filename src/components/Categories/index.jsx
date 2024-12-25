@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import brakePads from "../../assets/category/brake-pads.png";
 import brakeShoes from "../../assets/category/brake-shoes.png";
 import clutch from "../../assets/category/clutch-set.png";
@@ -7,16 +8,17 @@ import filters from "../../assets/category/filters.png";
 import sparkPlug from "../../assets/category/spark-plug.png";
 
 const Category = () => {
+  const navigate = useNavigate();
   const categories = [
-    { img: brakePads, title: "Brake Pads" },
-    { img: brakeShoes, title: "Brake Shoes" },
+    { img: brakePads, title: "Brakes" },
+    { img: brakeShoes, title: "Brakes" },
     { img: clutch, title: "Clutch Set" },
     { img: discRotors, title: "Disc Rotors" },
-    { img: filters, title: "Filters" },
+    { img: filters, title: "Filter" },
     { img: sparkPlug, title: "Spark Plug" },
   ];
   const handleCategories = (title) => () => {
-    console.log(`You have selected ${title} category`);
+    navigate(`/product?category=${title}`);
   };
   return (
     <div id="category" className="container mx-auto py-8  ">
@@ -31,7 +33,7 @@ const Category = () => {
       <div className="flex flex-wrap justify-center gap-4 my-4">
         {categories?.map((category) => (
           <div
-            className="flex flex-col items-center cursor-pointer"
+            className="flex flex-col items-center cursor-pointer hover:scale-105 transition-all "
             onClick={handleCategories(category.title)}
           >
             <img

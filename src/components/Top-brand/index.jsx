@@ -34,7 +34,7 @@ const Topbrand = () => {
       <div className="flex flex-wrap justify-center gap-2">
         {topBrand?.map((item) => (
           <div
-            className="flex flex-col items-center cursor-pointer"
+            className="flex flex-col items-center cursor-pointer hover:scale-105 transition-all  "
             onClick={handleBrand(item.title)}
           >
             <img
