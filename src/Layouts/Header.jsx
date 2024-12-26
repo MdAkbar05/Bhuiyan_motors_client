@@ -202,9 +202,7 @@ const Header = () => {
           <Link to="/product" className="flexCenter" title="Products">
             Products
           </Link>
-          <Link to="/" className="flexCenter" title="Offers">
-            Offers
-          </Link>
+
           <Link to="/" className="flexCenter" title="Categorys">
             Categorys
           </Link>

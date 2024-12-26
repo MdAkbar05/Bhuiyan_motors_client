@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,6 +8,15 @@ import img2 from "../../assets/testimonials/2.png";
 import img3 from "../../assets/testimonials/3.png";
 
 const Testimonials = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [window.innerWidth]);
   const data = [
     { image: img1, name: "John Doe", desc: "Excellent service and quality!" },
     {
@@ -28,7 +37,7 @@ const Testimonials = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Number of slides visible
+    slidesToShow: width < 736 ? 1 : 3, // Number of slides visible
     slidesToScroll: 1,
 
     arrows: false,
@@ -43,7 +52,7 @@ const Testimonials = () => {
         {data.map((testimonial, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center  bg-extra p-6 rounded-lg shadow-md  space-y-4 transition-transform duration-500"
+            className="flex flex-col sm:flex-wrap md:flex-nowrap items-center justify-center  bg-extra p-6 rounded-lg shadow-md  space-y-4 transition-transform duration-500"
           >
             <img
               src={testimonial.image}

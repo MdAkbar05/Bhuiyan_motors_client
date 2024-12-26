@@ -16,7 +16,7 @@ const Layout = () => {
   return (
     <>
       {/* if server off then call the ServerDown component  */}
-      if(products.length === 0){<ServerDown />}
+
       <Home />
       <Focus />
       <Features />
