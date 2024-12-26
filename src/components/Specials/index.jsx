@@ -15,8 +15,10 @@ const Specials = () => {
       <div className="flex flex-wrap justify-center gap-4 ">
         <div className="flex flex-col items-center space-y-2 hover:scale-105 transition-all cursor-pointer ">
           <img src={freeShipping} alt="free shipping" className="size-5/6" />
-          <h3 className="text-xl font-semibold">Free Shipping</h3>
-          <p>On orders over $99</p>
+          <h3 className="text-xl sm:font-normal md:font-semibold">
+            Free Shipping
+          </h3>
+          <p className="sm:text-base md:text-lg">On orders over $99</p>
         </div>
         <div className="flex flex-col items-center space-y-2 hover:scale-105 transition-all cursor-pointer ">
           <img
@@ -24,8 +26,12 @@ const Specials = () => {
             alt="cash on delivery"
             className="size-5/6"
           />
-          <h3 className="text-xl font-semibold">Cash on Delivery</h3>
-          <p>All orders are delivered within 3-5 business days</p>
+          <h3 className="text-xl sm:font-normal md:font-semibold">
+            Cash on Delivery
+          </h3>
+          <p className="sm:text-base md:text-lg">
+            All orders are delivered within 3-5 business days
+          </p>
         </div>
       </div>
     </div>

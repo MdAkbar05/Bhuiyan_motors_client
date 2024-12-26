@@ -27,7 +27,7 @@ const Category = () => {
       <h2 className="text-2xl text-center font-semibold  pt-4 uppercase">
         Categories
       </h2>{" "}
-      <p className="text-lg text-center text-lightGray   pb-4">
+      <p className="sm:text-base md:text-lg text-center text-lightGray   pb-4">
         Select a category to see related products. The products are organized
       </p>{" "}
       <div className="flex flex-wrap justify-center gap-4 my-4">

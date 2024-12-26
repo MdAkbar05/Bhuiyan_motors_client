@@ -195,7 +195,7 @@ const Header = () => {
       </header>
       {/* BottomBar */}
       <div className=" bg-extra backdrop-blur-md text-slate-400 ">
-        <div className="container mx-auto md:p-1 sm:px-4 sm:py-2 flexCenter gap-6">
+        <div className="container mx-auto md:p-1 sm:px-4 sm:py-2 flexCenter md:gap-6 sm:gap-2">
           <Link to="/" className="flexCenter" title="Home">
             Home
           </Link>

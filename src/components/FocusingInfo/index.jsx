@@ -41,7 +41,7 @@ const Focus = () => {
             {feature.desc}
           </div>
           <div className="flexCenter gap-2">
-            <div className="sm:text-sm md:text-lg uppercase text-textColor font-semibold">
+            <div className="sm:text-sm md:text-lg uppercase text-textColor sm:font-normal md:font-semibold">
               {feature.title}
             </div>
             <div className="flex items-center text-textColor">

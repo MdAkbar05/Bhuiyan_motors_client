@@ -32,7 +32,7 @@ const Features = () => {
       <h2 className="text-center text-2xl uppercase  font-semibold -mb-8">
         Why Bhuiyan Motors?
       </h2>
-      <p className="text-center text-lg text-lightGray p-0">
+      <p className="text-center sm:text-base md:text-lg text-lightGray p-0">
         Our commitment to quality, customer satisfaction, and timely delivery is
         evident in every aspect of our business.
       </p>
@@ -48,7 +48,9 @@ const Features = () => {
                 {feature.title}
               </div>
             </div>
-            <div className="text-lightGray">{feature.desc}</div>
+            <div className="text-lightGray sm:text-base md:text-lg">
+              {feature.desc}
+            </div>
           </div>
         ))}
       </div>

@@ -59,7 +59,7 @@ const Home = () => {
             <h1 className="lg:text-5xl md:text-3xl sm:text-2xl font-bold text-textColor leading-snug">
               MS.BHUIYAN MOTORS <br /> AUTO PARTS STORE
             </h1>
-            <p className="text-xl text-textColor">
+            <p className="md:text-xl text-textColor sm:text-base">
               Welcome to the Bhuiyan Motors Shop, where you will find everything
               you need to build your dream car
             </p>

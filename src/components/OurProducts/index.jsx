@@ -33,7 +33,7 @@ const OurProducts = () => {
       <h2 className="text-2xl text-center font-semibold pt-4 uppercase">
         Our Products
       </h2>
-      <p className="text-lg text-center text-lightGray pb-4">
+      <p className="sm:text-base md:text-lg text-center text-lightGray pb-4">
         Explore a World of Choices Across Our Most Popular
       </p>
       {/* Tabs */}
