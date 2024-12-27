@@ -10,25 +10,25 @@ const About = () => {
         link="http://localhost:3000/"
       />
       <div className="container mx-auto p-4 ">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto ">
           <div className="text-center mb-10">
-            <h1 className="text-2xl text-center font-semibold  pt-4 uppercase">
+            <h1 className="sm:text-xl md:text-2xl text-center font-semibold  pt-4 uppercase">
               About Bhuiya Motors Shop
             </h1>
-            <p className="text-lg text-center text-lightGray   pb-4">
+            <p className="sm:text-base md:text-lg text-center text-lightGray   pb-4">
               Welcome to Bhuiya Motors Shop, your one-stop destination for
               quality car parts. We are committed to providing the best products
               and exceptional service to our customers.
             </p>
           </div>
 
-          <div className="flex justify-around items-center flex-wrap gap-2">
+          <div className="flex sm:flex-col md:flex-row justify-around items-center flex-wrap gap-2">
             {/* Mission Section */}
-            <div className="bg-extra shadow-md rounded-lg p-6 mb-10 w-5/12 h-96 flexCenter flex-col">
+            <div className="bg-extra shadow-md rounded-lg p-6 mb-10 sm:w-auto md:w-5/12 h-auto flexCenter flex-col">
               <h2 className="text-2xl font-semibold text-textColor-800 mb-4">
                 Our Mission
               </h2>
-              <p className="text-lightGray  text-justify">
+              <p className="text-lightGray ">
                 At Bhuiya Motors Shop, our mission is to deliver premium car
                 parts to meet all your automotive needs. We aim to ensure your
                 vehicles run smoothly with reliable and high-quality components.
@@ -37,11 +37,11 @@ const About = () => {
             </div>
 
             {/* Features Section */}
-            <div className="bg-extra shadow-md rounded-lg p-6 mb-10 w-5/12 h-96   flexCenter flex-col">
+            <div className="bg-extra shadow-md rounded-lg p-6 mb-10 sm:w-auto md:w-5/12 h-auto   flexCenter flex-col">
               <h2 className="text-2xl font-semibold text-textColor mb-4">
                 Our Features
               </h2>
-              <ul className="list-disc list-inside text-lightGray space-y-2">
+              <ul className=" list-inside text-lightGray space-y-2 list-none">
                 <li className="bg-extra p-1 rounded-lg">
                   High-quality car parts sourced from trusted manufacturers.
                 </li>
@@ -61,16 +61,16 @@ const About = () => {
             </div>
 
             {/* Contact Information Section */}
-            <div className="bg-extra shadow-md rounded-lg p-6 mb-10 w-10/12 flexCenter flex-col">
-              <h2 className="text-2xl font-semibold text-textColor mb-4">
+            <div className="bg-extra shadow-md rounded-lg p-6 mb-10 ">
+              <h2 className="text-2xl font-semibold text-textColor mb-4 text-center">
                 Contact Us
               </h2>
               <p className="text-lightGray mb-2">
-                <strong>Address:</strong> 123 Main Street, Your City, Your
-                Country
+                <strong>Address:</strong> 314 Sheik Mujib Road, Chumhuni,
+                Chattagram Country
               </p>
               <p className="text-lightGray mb-2">
-                <strong>Email:</strong> contact@bhuiyamotors.com
+                <strong>Email:</strong> tonmoy2b@gmail.com
               </p>
               <p className="text-lightGray mb-2">
                 <strong>Phone:</strong> +123 456 7890
