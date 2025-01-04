@@ -85,7 +85,7 @@ const About = () => {
             </h2>
             <iframe
               className="w-full h-96"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8367006891346!2d144.95592831531845!3d-37.81720997975198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5776964ef1e8b69!2sYour%20Business%20Address!5e0!3m2!1sen!2sbd!4v1692739328232!5m2!1sen!2sbd"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d834.9253741506751!2d91.8116407695492!3d22.33510483922032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8c8025ac3c9%3A0x4208f57417a8d31e!2sM%2FS%20Bhuiyan%20Motors!5e1!3m2!1sen!2sbd!4v1735154691267!5m2!1sen!2sbd"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

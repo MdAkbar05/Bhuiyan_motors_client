@@ -21,10 +21,10 @@ const Contact = () => {
 
     emailjs
       .send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS Service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS Template ID
+        "service_hv7203i", // Replace with your EmailJS Service ID
+        "template_jjkzrgd", // Replace with your EmailJS Template ID
         formData,
-        "YOUR_PUBLIC_KEY" // Replace with your EmailJS Public Key
+        "awJdprtsfW3Yyl_rC" // Replace with your EmailJS Public Key
       )
       .then(
         (response) => {
@@ -83,7 +83,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 text-black rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your Name"
                   required
                 />
@@ -101,7 +101,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border text-black border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your Email"
                   required
                 />
@@ -118,7 +118,7 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border text-black border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your Message"
                   rows="5"
                   required
@@ -140,7 +140,7 @@ const Contact = () => {
             </h2>
             <iframe
               className="w-full h-80"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8367006891346!2d144.95592831531845!3d-37.81720997975198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5776964ef1e8b69!2sYour%20Business%20Address!5e0!3m2!1sen!2sbd!4v1692739328232!5m2!1sen!2sbd"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d834.9253741506751!2d91.8116407695492!3d22.33510483922032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8c8025ac3c9%3A0x4208f57417a8d31e!2sM%2FS%20Bhuiyan%20Motors!5e1!3m2!1sen!2sbd!4v1735154691267!5m2!1sen!2sbd"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

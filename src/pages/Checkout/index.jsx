@@ -28,9 +28,11 @@ const Checkout = () => {
   const [currentStep, setCurrentStep] = useState(1); // Track current step
   const [locationTab, setLocationTab] = useState("current"); // Track selected location tab
   const [scheduleTab, setScheduleTab] = useState("morning"); // Track selected schedule tab
-  const [selectedSlot, setSelectedSlot] = useState(""); // Track selected schedule slot
-  const [selectedAddress, setSelectedAddress] = useState("");
-  const [selectedPayment, setSelectedPayment] = useState(""); // Selected payment method
+  const [selectedSlot, setSelectedSlot] = useState("Afternoon 12:00pm"); // Track selected schedule slot
+  const [selectedAddress, setSelectedAddress] = useState(
+    "Chumhuni Agrabad,Chittagong"
+  );
+  const [selectedPayment, setSelectedPayment] = useState("Cash on Delivery"); // Selected payment method
   const [paymentMethods, setPaymentMethods] = useState([
     "Cash on Delivery",
     "Bitcoin",

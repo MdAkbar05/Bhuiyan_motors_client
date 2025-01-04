@@ -106,13 +106,7 @@ const Header = () => {
                 <Link to="/profile" className="flexCenter" title="User">
                   <FaUserCircle size={24} />
                 </Link>
-                {/* Cart  */}
-                <Link to="/cart" className="flexCenter relative" title="Carts">
-                  <span className="bg-red-600 text-white size-4 text-sm rounded-full flexCenter absolute -top-2 -right-2">
-                    {totalCount}
-                  </span>
-                  <FaCartArrowDown size={24} />
-                </Link>
+
                 {/* signOut */}
                 <Link
                   onClick={handleLogout}
@@ -130,6 +124,13 @@ const Header = () => {
                 </Link>
               </>
             )}
+            {/* Cart  */}
+            <Link to="/cart" className="flexCenter relative" title="Carts">
+              <span className="bg-red-600 text-white size-4 text-sm rounded-full flexCenter absolute -top-2 -right-2">
+                {totalCount}
+              </span>
+              <FaCartArrowDown size={24} />
+            </Link>
           </nav>
           {/* Mobile Navigation  */}
           <nav className="sm:flex lg:hidden relative">

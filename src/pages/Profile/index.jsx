@@ -38,7 +38,7 @@ const Profile = () => {
 
   // filter with user.name & orders.user.name
   const filteredOrders = orders.filter((order) =>
-    order.user.name.toLowerCase().includes(user?.name.toLowerCase())
+    order.user?.name?.toLowerCase().includes(user?.name.toLowerCase())
   );
 
   return (
@@ -115,7 +115,7 @@ const Profile = () => {
                       </span>
                     </td>
                     <td className="py-2 px-4 text-sm ">
-                      {order.totalPrice.toFixed(2)}TK
+                      {order.totalPrice.toFixed(2)}$
                     </td>
                   </tr>
                 ))

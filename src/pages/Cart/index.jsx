@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,7 +7,7 @@ import {
   clearCart,
   removeFromCart,
 } from "../../features/cartSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import HelmetPage from "../../components/Helmet";
 
 const Carts = () => {
@@ -15,9 +15,24 @@ const Carts = () => {
   const notify = (msg) => toast(msg);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [user, setUser] = React.useState(null);
   const handleIncrement = (id, quantity) => {
     dispatch(changeQuantity({ id, quantity: quantity + 1 }));
   };
+
+  const location = useLocation();
+
+  // retrive user from local storage
+  const getUser = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  };
+  // call getUser
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleDecrement = (id, quantity) => {
     if (quantity > 1) {
@@ -131,7 +146,9 @@ const Carts = () => {
                     ? toast.error(
                         "Your cart is empty. Please select products first."
                       )
-                    : navigate("/checkout")
+                    : user
+                    ? navigate("/checkout")
+                    : navigate("/login")
                 }
                 className="px-4 py-2 bg-blue-500 text-white rounded-md"
               >
