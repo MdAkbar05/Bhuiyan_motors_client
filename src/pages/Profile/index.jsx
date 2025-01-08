@@ -38,7 +38,7 @@ const Profile = () => {
 
   // filter with user.name & orders.user.name
   const filteredOrders = orders.filter((order) =>
-    order.user?.name?.toLowerCase().includes(user?.name.toLowerCase())
+    order?.user?.name?.toLowerCase().includes(user?.name?.toLowerCase())
   );
 
   return (
